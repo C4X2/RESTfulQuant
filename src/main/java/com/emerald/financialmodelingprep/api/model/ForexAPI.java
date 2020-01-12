@@ -1,6 +1,6 @@
 package com.emerald.financialmodelingprep.api.model;
 
-public interface ForexAPI extends FinancialModelingPrepAPI
+public interface ForexAPI extends FinancialModelingPrepAPIURLArguments
 {
 	/////////////////////////////////////////////////////////////////////
 	//

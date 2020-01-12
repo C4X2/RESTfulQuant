@@ -1,5 +1,7 @@
 package com.emerald.financialmodelingprep.api.impl;
 
+import java.util.Map;
+
 import com.emerald.financialmodelingprep.api.model.CompanyFinancialStatementAPI;
 import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
 import com.emerald.financialmodelingprep.common.constants.DataType;
@@ -36,6 +38,14 @@ public class CompanyFinancialStatementAPIImpl implements CompanyFinancialStateme
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public FinancialModelingPrepAPI buildAPIUrl(Company company, Map<String, String> args)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	@Override
 	public String getURL()

@@ -1,6 +1,6 @@
 package com.emerald.financialmodelingprep.api.model;
 
-public interface CompanyRatingAPI extends FinancialModelingPrepAPI
+public interface CompanyRatingAPI extends FinancialModelingPrepAPIURLArguments
 {
 	/////////////////////////////////////////////////////////////////////
 	//

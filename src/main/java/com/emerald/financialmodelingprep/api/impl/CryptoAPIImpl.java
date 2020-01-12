@@ -17,21 +17,6 @@ public class CryptoAPIImpl implements Crypto
 {
 	private String url;
 
-	/*@Override
-	public FinancialModelingPrepAPI buildAPIURL(Company company)
-	{
-		if (company == null)
-		{
-			return buildAPIURL();
-		}
-		return buildAPIURL(company.getSymbol());
-	}*/
-    /////////////////////////////////////////////////////////////////////
-    //
-    // Since the period argument, the data type argument and the seriestype argument 
-	// is unsupported for the Crypto API it is the same as calling buildIRL();
-    //
-    /////////////////////////////////////////////////////////////////////
 	@Override
 	public FinancialModelingPrepAPI buildAPIURL(String ticker)
 	{
@@ -41,36 +26,6 @@ public class CryptoAPIImpl implements Crypto
 		}
 		this.url = BASE_URL + CRYPTO_SINGLE + '/' + ticker;
 		return this;
-	}
-	
-	@Override
-	public FinancialModelingPrepAPI buildAPIURL(Company company, Period period)
-	{
-		if (company == null)
-		{
-			return buildAPIURL();
-		}
-		return buildAPIURL(company.getSymbol());
-	}
-
-	@Override
-	public FinancialModelingPrepAPI buildAPIURL(Company company, DataType dataType)
-	{
-		if (company == null)
-		{
-			return buildAPIURL();
-		}
-		return buildAPIURL(company.getSymbol());
-	}
-
-	@Override
-	public FinancialModelingPrepAPI buildAPIURL(Company company, SeriesType seriesType)
-	{
-		if (company == null)
-		{
-			return buildAPIURL();
-		}
-		return buildAPIURL(company.getSymbol());
 	}
 	
 	@Override

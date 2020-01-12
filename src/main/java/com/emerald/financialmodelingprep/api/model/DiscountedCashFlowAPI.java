@@ -1,6 +1,6 @@
 package com.emerald.financialmodelingprep.api.model;
 
-public interface DiscountedCashFlowAPI extends FinancialModelingPrepAPI
+public interface DiscountedCashFlowAPI extends FinancialModelingPrepAPIURLArguments
 {
 	/////////////////////////////////////////////////////////////////////
 	//

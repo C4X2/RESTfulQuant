@@ -1,6 +1,6 @@
 package com.emerald.financialmodelingprep.api.model;
 
-public interface StockMarketAPI extends FinancialModelingPrepAPI
+public interface StockMarketAPI extends FinancialModelingPrepAPIURLArguments
 {
 	/////////////////////////////////////////////////////////////////////
 	//

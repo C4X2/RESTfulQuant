@@ -1,12 +1,5 @@
 package com.emerald.financialmodelingprep.api.model;
 
-import java.util.Map;
-
-import com.emerald.financialmodelingprep.common.constants.DataType;
-import com.emerald.financialmodelingprep.common.constants.Period;
-import com.emerald.financialmodelingprep.common.constants.SeriesType;
-import com.emerald.financialmodelingprep.common.params.Company;
-
 public interface FinancialModelingPrepAPI
 {
 	/**

@@ -1,5 +1,7 @@
 package com.emerald.financialmodelingprep.api.impl;
 
+import java.util.Map;
+
 import com.emerald.financialmodelingprep.api.model.CompanyRatingAPI;
 import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
 import com.emerald.financialmodelingprep.common.constants.DataType;
@@ -38,6 +40,13 @@ public class CompanyRatingAPIImpl implements CompanyRatingAPI
 	}
 
 	@Override
+	public FinancialModelingPrepAPI buildAPIUrl(Company company, Map<String, String> args)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public String getURL()
 	{
 		// TODO Auto-generated method stub
@@ -50,5 +59,6 @@ public class CompanyRatingAPIImpl implements CompanyRatingAPI
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

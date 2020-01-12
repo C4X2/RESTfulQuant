@@ -1,5 +1,7 @@
 package com.emerald.financialmodelingprep.api.impl;
 
+import java.util.Map;
+
 import com.emerald.financialmodelingprep.api.model.DiscountedCashFlowAPI;
 import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
 import com.emerald.financialmodelingprep.common.constants.DataType;
@@ -33,6 +35,14 @@ public class DiscountedCashFlowAPIImpl implements DiscountedCashFlowAPI
 
 	@Override
 	public FinancialModelingPrepAPI buildAPIURL(Company company, SeriesType seriesType)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+	@Override
+	public FinancialModelingPrepAPI buildAPIUrl(Company company, Map<String, String> args)
 	{
 		// TODO Auto-generated method stub
 		return null;

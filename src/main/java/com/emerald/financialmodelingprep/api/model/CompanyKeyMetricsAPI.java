@@ -1,6 +1,6 @@
 package com.emerald.financialmodelingprep.api.model;
 
-public interface CompanyKeyMetricsAPI extends FinancialModelingPrepAPI
+public interface CompanyKeyMetricsAPI extends FinancialModelingPrepAPIURLArguments
 {
 	/////////////////////////////////////////////////////////////////////
 	//

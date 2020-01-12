@@ -1,7 +1,5 @@
 package com.emerald.financialmodelingprep.api.model;
 
-import com.emerald.financialmodelingprep.common.params.Company;
-
 public interface Crypto extends FinancialModelingPrepAPI
 {
     /////////////////////////////////////////////////////////////////////
@@ -57,12 +55,6 @@ public interface Crypto extends FinancialModelingPrepAPI
      */
     @Override
     public FinancialModelingPrepAPI buildAPIURL(String ticker);
-    
-    /**
-     * If the supplied argument is null or empty, it is the equalivalent of calling the {@link #buildAPIURL()} method.
-     */
-    // @Override 
-    //public FinancialModelingPrepAPI buildAPIURL(Company company);
     
     /**
      * Convience method to build the {@link #CRYPTO} endpoint URL.

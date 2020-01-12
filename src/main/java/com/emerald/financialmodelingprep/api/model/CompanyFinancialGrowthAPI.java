@@ -1,6 +1,6 @@
 package com.emerald.financialmodelingprep.api.model;
 
-public interface CompanyFinancialGrowthAPI extends FinancialModelingPrepAPI
+public interface CompanyFinancialGrowthAPI extends FinancialModelingPrepAPIURLArguments
 {
 	/////////////////////////////////////////////////////////////////////
 	//
