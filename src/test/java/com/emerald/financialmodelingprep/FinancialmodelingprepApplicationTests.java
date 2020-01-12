@@ -139,4 +139,11 @@ class FinancialmodelingprepApplicationTests {
 		CompanyProfileAPI api = (CompanyProfileAPI) apiFactory.getAPIOfType(APICallType.COMPANY_PROFILE);
 		assertNotNull(api.buildAPIURL(null));
 	}
+	
+	
+    /////////////////////////////////////////////////////////////////////
+    //
+    // Company Rating Test
+    //
+    /////////////////////////////////////////////////////////////////////
 }

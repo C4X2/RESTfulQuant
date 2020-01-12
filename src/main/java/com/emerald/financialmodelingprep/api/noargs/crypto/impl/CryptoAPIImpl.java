@@ -1,4 +1,4 @@
-package com.emerald.financialmodelingprep.api.impl;
+package com.emerald.financialmodelingprep.api.noargs.crypto.impl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,23 +6,36 @@ import java.net.URL;
 
 import org.springframework.util.StringUtils;
 
-import com.emerald.financialmodelingprep.api.model.CompanyRatingAPI;
+import com.emerald.financialmodelingprep.api.model.Crypto;
 import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
+import com.emerald.financialmodelingprep.common.constants.DataType;
+import com.emerald.financialmodelingprep.common.constants.Period;
+import com.emerald.financialmodelingprep.common.constants.SeriesType;
+import com.emerald.financialmodelingprep.common.params.Company;
 
-public class CompanyRatingAPIImpl implements CompanyRatingAPI
+public class CryptoAPIImpl implements Crypto
 {
 	private String url;
-	
+
 	@Override
 	public FinancialModelingPrepAPI buildAPIURL(String ticker)
 	{
-		if (StringUtils.hasText(ticker))
+		if (!StringUtils.hasText(ticker))
 		{
-			this.url = BASE_URL + COMPANY_RATING + ticker;
+			return buildAPIURL();
 		}
+		this.url = BASE_URL + CRYPTO_SINGLE + '/' + ticker;
 		return this;
 	}
 	
+	@Override
+	public FinancialModelingPrepAPI buildAPIURL()
+	{
+		this.url = BASE_URL + CRYPTO;
+		return this;
+	}
+
+
 	@Override
 	public String getURL()
 	{

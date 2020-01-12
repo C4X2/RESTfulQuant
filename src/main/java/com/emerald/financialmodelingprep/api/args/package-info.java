@@ -1,4 +1,3 @@
-
 /**
  * This package contains all FinancialModelingPrepAPI that accept query
  * arguments past the company intended.
