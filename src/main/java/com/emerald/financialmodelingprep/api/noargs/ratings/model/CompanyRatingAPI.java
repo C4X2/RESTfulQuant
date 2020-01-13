@@ -1,4 +1,6 @@
-package com.emerald.financialmodelingprep.api.model;
+package com.emerald.financialmodelingprep.api.noargs.ratings.model;
+
+import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
 
 public interface CompanyRatingAPI extends FinancialModelingPrepAPI
 {

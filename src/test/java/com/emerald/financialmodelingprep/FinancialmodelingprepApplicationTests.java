@@ -6,7 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,6 +20,10 @@ import com.emerald.financialmodelingprep.common.params.CryptocurrencyCoin;
 import com.emerald.financialmodelingprep.managers.impl.APIFactoryImpl;
 import com.emerald.financialmodelingprep.managers.model.APIFactory;
 import com.emerald.financialmodelingprep.services.impl.JsonDeserializerImpl;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 @SpringBootTest
 class FinancialmodelingprepApplicationTests
@@ -30,6 +37,7 @@ class FinancialmodelingprepApplicationTests
 
 	private static final String	APPLE	= "AAPL";
 	private static final String	BITCOIN	= "BTC";
+	private static final String CRYPTOCURRENCIES_LIST = "cryptocurrenciesList";
 
 	@Test
 	void contextLoads()
@@ -202,7 +210,7 @@ class FinancialmodelingprepApplicationTests
 		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
 		String json = api.buildAPIURL(BITCOIN).get();
 		CryptocurrencyCoin coin = JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
-		assertTrue(coin.getChanges().compareTo(new BigDecimal(0)) > 0);
+		assertTrue(coin.getChanges() != null && coin.getChanges().compareTo(new BigDecimal(0)) != 0);
 	}
 	
 	@Test
@@ -213,5 +221,34 @@ class FinancialmodelingprepApplicationTests
 		String json = api.buildAPIURL(BITCOIN).get();
 		CryptocurrencyCoin coin = JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
 		assertTrue(coin.getPrice().compareTo(new BigDecimal(0)) > 0);
+	}
+	
+	@Test
+	void jsonDeserializerTest07()
+	{
+		APIFactory apiFactory = new APIFactoryImpl();
+		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		String json = api.buildAPIURL().get();
+		JsonObject jObj = null;
+		JsonArray arr = null;
+		JsonElement coins = JsonParser.parseString(json);
+		if (coins.isJsonObject())
+		{
+			jObj = coins.getAsJsonObject();
+		}
+		if (jObj != null && jObj.has(CRYPTOCURRENCIES_LIST))
+		{
+			arr = jObj.get(CRYPTOCURRENCIES_LIST).getAsJsonArray();
+		}
+		List<CryptocurrencyCoin> coinList = new ArrayList<CryptocurrencyCoin> ();
+		if (arr != null)
+		{
+			for (JsonElement elem : arr)
+			{
+				coinList.add(JsonDeserializerImpl.getGson().fromJson(elem, CryptocurrencyCoin.class));
+			}
+
+		}
+		assertTrue(CollectionUtils.isNotEmpty(coinList));
 	}
 }

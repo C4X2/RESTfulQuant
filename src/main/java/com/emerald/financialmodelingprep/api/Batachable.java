@@ -1,4 +1,4 @@
-package com.emerald.financialmodelingprep.api.model;
+package com.emerald.financialmodelingprep.api;
 
 /**
  * A marker interface that denotes whether a given API call can receive multiple

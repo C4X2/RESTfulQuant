@@ -1,17 +1,16 @@
-package com.emerald.financialmodelingprep.api.impl;
+package com.emerald.financialmodelingprep.api.args.stocks.impl;
 
 import java.util.Map;
 
-import com.emerald.financialmodelingprep.api.model.DiscountedCashFlowAPI;
-import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
+import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
+import com.emerald.financialmodelingprep.api.args.stocks.model.StocksAPI;
 import com.emerald.financialmodelingprep.common.constants.DataType;
 import com.emerald.financialmodelingprep.common.constants.Period;
 import com.emerald.financialmodelingprep.common.constants.SeriesType;
 import com.emerald.financialmodelingprep.common.params.Company;
 
-public class DiscountedCashFlowAPIImpl implements DiscountedCashFlowAPI
+public class StocksAPIImpl implements StocksAPI
 {
-
 	@Override
 	public FinancialModelingPrepAPI buildAPIURL(String ticker)
 	{
@@ -40,7 +39,6 @@ public class DiscountedCashFlowAPIImpl implements DiscountedCashFlowAPI
 		return null;
 	}
 	
-
 	@Override
 	public FinancialModelingPrepAPI buildAPIUrl(Company company, Map<String, String> args)
 	{
@@ -61,5 +59,6 @@ public class DiscountedCashFlowAPIImpl implements DiscountedCashFlowAPI
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

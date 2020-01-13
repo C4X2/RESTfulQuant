@@ -6,12 +6,8 @@ import java.net.URL;
 
 import org.springframework.util.StringUtils;
 
-import com.emerald.financialmodelingprep.api.model.Crypto;
-import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
-import com.emerald.financialmodelingprep.common.constants.DataType;
-import com.emerald.financialmodelingprep.common.constants.Period;
-import com.emerald.financialmodelingprep.common.constants.SeriesType;
-import com.emerald.financialmodelingprep.common.params.Company;
+import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
+import com.emerald.financialmodelingprep.api.noargs.crypto.model.Crypto;
 
 public class CryptoAPIImpl implements Crypto
 {

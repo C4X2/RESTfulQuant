@@ -1,7 +1,8 @@
-package com.emerald.financialmodelingprep.api.model;
+package com.emerald.financialmodelingprep.api.args;
 
 import java.util.Map;
 
+import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
 import com.emerald.financialmodelingprep.common.constants.DataType;
 import com.emerald.financialmodelingprep.common.constants.Period;
 import com.emerald.financialmodelingprep.common.constants.SeriesType;

@@ -1,4 +1,4 @@
-package com.emerald.financialmodelingprep.api.model;
+package com.emerald.financialmodelingprep.api;
 
 public interface FinancialModelingPrepAPI
 {

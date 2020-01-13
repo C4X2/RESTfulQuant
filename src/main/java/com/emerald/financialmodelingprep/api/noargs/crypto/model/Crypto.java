@@ -1,6 +1,6 @@
 package com.emerald.financialmodelingprep.api.noargs.crypto.model;
 
-import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
+import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
 
 public interface Crypto extends FinancialModelingPrepAPI
 {

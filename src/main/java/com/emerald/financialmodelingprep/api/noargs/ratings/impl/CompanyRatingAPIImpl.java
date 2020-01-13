@@ -1,4 +1,4 @@
-package com.emerald.financialmodelingprep.api.impl;
+package com.emerald.financialmodelingprep.api.noargs.ratings.impl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,14 +6,10 @@ import java.net.URL;
 
 import org.springframework.util.StringUtils;
 
-import com.emerald.financialmodelingprep.api.model.CompanyProfileAPI;
-import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
-import com.emerald.financialmodelingprep.common.constants.DataType;
-import com.emerald.financialmodelingprep.common.constants.Period;
-import com.emerald.financialmodelingprep.common.constants.SeriesType;
-import com.emerald.financialmodelingprep.common.params.Company;
+import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
+import com.emerald.financialmodelingprep.api.noargs.ratings.model.CompanyRatingAPI;
 
-public class CompanyProfileAPIImpl implements CompanyProfileAPI
+public class CompanyRatingAPIImpl implements CompanyRatingAPI
 {
 	private String url;
 	
@@ -22,11 +18,11 @@ public class CompanyProfileAPIImpl implements CompanyProfileAPI
 	{
 		if (StringUtils.hasText(ticker))
 		{
-			this.url = BASE_URL + COMPANY_PROFILE + ticker;
+			this.url = BASE_URL + COMPANY_RATING + ticker;
 		}
 		return this;
 	}
-
+	
 	@Override
 	public String getURL()
 	{
