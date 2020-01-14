@@ -5,6 +5,11 @@ import java.util.Objects;
 
 public class ValidationUtils
 {
+    /**
+     * <code>ValidationUtils</code> should not normally be instantiated.
+     */
+	private ValidationUtils() {}
+	
 	/**
 	 * Checks the input to see if any of the supplied arguments are null, if they
 	 * are a NullPointerException is thrown.
