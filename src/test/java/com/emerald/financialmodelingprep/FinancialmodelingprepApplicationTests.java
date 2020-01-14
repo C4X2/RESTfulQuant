@@ -11,10 +11,11 @@ import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.emerald.financialmodelingprep.api.model.CompanyProfileAPI;
-import com.emerald.financialmodelingprep.api.model.Crypto;
+import com.emerald.financialmodelingprep.api.noargs.crypto.model.Crypto;
+import com.emerald.financialmodelingprep.api.noargs.profile.model.CompanyProfileAPI;
 import com.emerald.financialmodelingprep.common.constants.APICallType;
 import com.emerald.financialmodelingprep.common.params.CryptocurrencyCoin;
 import com.emerald.financialmodelingprep.managers.impl.APIFactoryImpl;
@@ -38,6 +39,7 @@ class FinancialmodelingprepApplicationTests
 	private static final String	APPLE	= "AAPL";
 	private static final String	BITCOIN	= "BTC";
 	private static final String CRYPTOCURRENCIES_LIST = "cryptocurrenciesList";
+	private APIFactory api;
 
 	@Test
 	void contextLoads()
@@ -53,40 +55,35 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void cryptocurrenciesTest01()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		assertEquals("https://financialmodelingprep.com/api/v3/cryptocurrencies", api.buildAPIURL().getURL());
 	}
 
 	@Test
 	void cryptocurrenciesTest02()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		assertEquals("https://financialmodelingprep.com/api/v3/cryptocurrencies", api.buildAPIURL("").getURL());
 	}
 
 	@Test
 	void cryptocurrenciesTest03()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		assertEquals("https://financialmodelingprep.com/api/v3/cryptocurrencies", api.buildAPIURL(null).getURL());
 	}
 
 	@Test
 	void cryptocurrenciesTest04()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		assertNotNull(api.buildAPIURL(null).get());
 	}
 
 	@Test
 	void cryptocurrenciesTest05()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		assertNotNull(api.buildAPIURL("BTC").get());
 	}
 
@@ -99,56 +96,49 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void companyProfileTest01()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		CompanyProfileAPI api = (CompanyProfileAPI) apiFactory.getAPIOfType(APICallType.COMPANY_PROFILE);
+		CompanyProfileAPI api = (CompanyProfileAPI) this.getApi().getAPIOfType(APICallType.COMPANY_PROFILE);
 		assertNotNull(api);
 	}
 
 	@Test
 	void companyProfileTest02()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		CompanyProfileAPI api = (CompanyProfileAPI) apiFactory.getAPIOfType(APICallType.COMPANY_PROFILE);
+		CompanyProfileAPI api = (CompanyProfileAPI) this.getApi().getAPIOfType(APICallType.COMPANY_PROFILE);
 		assertTrue(api instanceof CompanyProfileAPI);
 	}
 
 	@Test
 	void companyProfileTest03()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		CompanyProfileAPI api = (CompanyProfileAPI) apiFactory.getAPIOfType(APICallType.COMPANY_PROFILE);
+		CompanyProfileAPI api = (CompanyProfileAPI) this.getApi().getAPIOfType(APICallType.COMPANY_PROFILE);
 		assertEquals("https://financialmodelingprep.com/api/v3/company/profile/AAPL", api.buildAPIURL(APPLE).getURL());
 	}
 
 	@Test
 	void companyProfileTest04()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		CompanyProfileAPI api = (CompanyProfileAPI) apiFactory.getAPIOfType(APICallType.COMPANY_PROFILE);
+		CompanyProfileAPI api = (CompanyProfileAPI) this.getApi().getAPIOfType(APICallType.COMPANY_PROFILE);
 		assertNotNull(api.buildAPIURL(APPLE).get());
 	}
 
 	@Test
 	void companyProfileTest05()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		CompanyProfileAPI api = (CompanyProfileAPI) apiFactory.getAPIOfType(APICallType.COMPANY_PROFILE);
+		CompanyProfileAPI api = (CompanyProfileAPI) this.getApi().getAPIOfType(APICallType.COMPANY_PROFILE);
 		assertNull(api.get());
 	}
 
 	@Test
 	void companyProfileTest06()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		CompanyProfileAPI api = (CompanyProfileAPI) apiFactory.getAPIOfType(APICallType.COMPANY_PROFILE);
+		CompanyProfileAPI api = (CompanyProfileAPI) this.getApi().getAPIOfType(APICallType.COMPANY_PROFILE);
 		assertNull(api.getURL());
 	}
 
 	@Test
 	void companyProfileTest07()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		CompanyProfileAPI api = (CompanyProfileAPI) apiFactory.getAPIOfType(APICallType.COMPANY_PROFILE);
+		CompanyProfileAPI api = (CompanyProfileAPI) this.getApi().getAPIOfType(APICallType.COMPANY_PROFILE);
 		assertNotNull(api.buildAPIURL(null));
 	}
 
@@ -166,8 +156,7 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void jsonDeserializerTest01()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		String json = api.buildAPIURL(BITCOIN).get();
 		CryptocurrencyCoin coin = JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
 		assertNotNull(coin);
@@ -176,8 +165,7 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void jsonDeserializerTest02()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		String json = api.buildAPIURL(BITCOIN).get();
 		CryptocurrencyCoin coin = JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
 		assertEquals(BITCOIN,coin.getTicker());
@@ -186,8 +174,7 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void jsonDeserializerTest03()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		String json = api.buildAPIURL(BITCOIN).get();
 		CryptocurrencyCoin coin = JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
 		assertEquals("Bitcoin", coin.getName());
@@ -196,8 +183,7 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void jsonDeserializerTest04()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		String json = api.buildAPIURL(BITCOIN).get();
 		CryptocurrencyCoin coin = JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
 		assertTrue(coin.getMarketCapitalization() > 0);
@@ -206,18 +192,16 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void jsonDeserializerTest05()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		String json = api.buildAPIURL(BITCOIN).get();
 		CryptocurrencyCoin coin = JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
-		assertTrue(coin.getChanges() != null && coin.getChanges().compareTo(new BigDecimal(0)) != 0);
+		assertTrue((coin.getChanges() != null) && (coin.getChanges().compareTo(new BigDecimal(0)) != 0));
 	}
 	
 	@Test
 	void jsonDeserializerTest06()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		String json = api.buildAPIURL(BITCOIN).get();
 		CryptocurrencyCoin coin = JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
 		assertTrue(coin.getPrice().compareTo(new BigDecimal(0)) > 0);
@@ -226,8 +210,7 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void jsonDeserializerTest07()
 	{
-		APIFactory apiFactory = new APIFactoryImpl();
-		Crypto api = (Crypto) apiFactory.getAPIOfType(APICallType.CRYPTO);
+		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
 		String json = api.buildAPIURL().get();
 		JsonObject jObj = null;
 		JsonArray arr = null;
@@ -236,7 +219,7 @@ class FinancialmodelingprepApplicationTests
 		{
 			jObj = coins.getAsJsonObject();
 		}
-		if (jObj != null && jObj.has(CRYPTOCURRENCIES_LIST))
+		if ((jObj != null) && jObj.has(CRYPTOCURRENCIES_LIST))
 		{
 			arr = jObj.get(CRYPTOCURRENCIES_LIST).getAsJsonArray();
 		}
@@ -250,5 +233,22 @@ class FinancialmodelingprepApplicationTests
 
 		}
 		assertTrue(CollectionUtils.isNotEmpty(coinList));
+	}
+
+	/**
+	 * @return the api
+	 */
+	public APIFactory getApi()
+	{
+		return this.api;
+	}
+
+	/**
+	 * @param api the api to set
+	 */
+	@Autowired
+	public void setApi(APIFactory api)
+	{
+		this.api = api;
 	}
 }

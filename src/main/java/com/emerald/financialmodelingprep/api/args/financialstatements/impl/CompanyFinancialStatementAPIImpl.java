@@ -1,9 +1,9 @@
-package com.emerald.financialmodelingprep.api.impl;
+package com.emerald.financialmodelingprep.api.args.financialstatements.impl;
 
 import java.util.Map;
 
-import com.emerald.financialmodelingprep.api.model.CompanyFinancialStatementAPI;
-import com.emerald.financialmodelingprep.api.model.FinancialModelingPrepAPI;
+import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
+import com.emerald.financialmodelingprep.api.args.financialstatements.model.CompanyFinancialStatementAPI;
 import com.emerald.financialmodelingprep.common.constants.DataType;
 import com.emerald.financialmodelingprep.common.constants.Period;
 import com.emerald.financialmodelingprep.common.constants.SeriesType;

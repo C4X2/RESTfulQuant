@@ -1,4 +1,6 @@
-package com.emerald.financialmodelingprep.api.model;
+package com.emerald.financialmodelingprep.api.args.keymetrics.model;
+
+import com.emerald.financialmodelingprep.api.args.FinancialModelingPrepAPIURLArguments;
 
 public interface CompanyKeyMetricsAPI extends FinancialModelingPrepAPIURLArguments
 {

@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
 import com.emerald.financialmodelingprep.api.noargs.profile.model.CompanyProfileAPI;
 
+@Service
 public class CompanyProfileAPIImpl implements CompanyProfileAPI
 {
 	private String url;

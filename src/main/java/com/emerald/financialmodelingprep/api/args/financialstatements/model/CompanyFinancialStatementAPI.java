@@ -1,4 +1,7 @@
-package com.emerald.financialmodelingprep.api.model;
+package com.emerald.financialmodelingprep.api.args.financialstatements.model;
+
+import com.emerald.financialmodelingprep.api.Batachable;
+import com.emerald.financialmodelingprep.api.args.FinancialModelingPrepAPIURLArguments;
 
 public interface CompanyFinancialStatementAPI extends FinancialModelingPrepAPIURLArguments
 {

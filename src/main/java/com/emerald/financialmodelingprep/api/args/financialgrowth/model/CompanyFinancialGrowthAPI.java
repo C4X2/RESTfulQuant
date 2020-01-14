@@ -1,4 +1,6 @@
-package com.emerald.financialmodelingprep.api.model;
+package com.emerald.financialmodelingprep.api.args.financialgrowth.model;
+
+import com.emerald.financialmodelingprep.api.args.FinancialModelingPrepAPIURLArguments;
 
 public interface CompanyFinancialGrowthAPI extends FinancialModelingPrepAPIURLArguments
 {

@@ -70,23 +70,6 @@ public interface FinancialModelingPrepAPI
 	public static final String	RESTFUL_QUERY_CONCAT	= "&";
 
 	/**
-	 * Builds the URL for the callType assuming that no company arguent is required.
-	 * Used to build CRYPTO, TICKER_LIST and ALL_REAL_TIME_STOCK_PRICE for example.
-	 *
-	 * @param callType the API in which you want to call.
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
-	 */
-	// public FinancialModelingPrepAPI buildAPIURL(APICallType callType);
-
-	/**
-	 * Builds the URL for the given company.
-	 * 
-	 * @param company the company that you want to receive information about.
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
-	 */
-	// public FinancialModelingPrepAPI buildAPIURL(Company company);
-
-	/**
 	 * Builds the URL for the given company.
 	 * 
 	 * @param ticker the ticker for the company that you want to receive information
@@ -94,46 +77,6 @@ public interface FinancialModelingPrepAPI
 	 * @return the FinancialModelingPrepAPI object with the newly built URL.
 	 */
 	public FinancialModelingPrepAPI buildAPIURL(String ticker);
-
-	/**
-	 * Builds the URL for the given company.
-	 *
-	 * @param callType A call type enum related to the API you want to call
-	 * @param company the company that you want to receive information about.
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
-	 */
-	// public FinancialModelingPrepAPI buildAPIURL(APICallType callType, Company
-	// company);
-
-	/**
-	 * Builds the URL for the given company.
-	 * 
-	 * @param callType A call type enum related to the API you want to call
-	 * @param company the company that you want to receive information about.
-	 * @param period an enum value related to the period argument
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
-	 */
-	//public FinancialModelingPrepAPI buildAPIURL(Company company, Period period);
-
-	/**
-	 * Builds the URL for the given company.
-	 * 
-	 * @param callType A call type enum related to the API you want to call
-	 * @param company the company that you want to receive information about.
-	 * @param dataType
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
-	 */
-	//public FinancialModelingPrepAPI buildAPIURL(Company company, DataType dataType);
-
-	/**
-	 * Builds the URL for the given company.
-	 * 
-	 * @param callType A call type enum related to the API you want to call
-	 * @param company the company that you want to receive information about.
-	 * @param seriesType
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
-	 */
-	//public FinancialModelingPrepAPI buildAPIURL(Company company, SeriesType seriesType);
 
 	/**
 	 * Returns the URL stored in the FinancialModelingPrepAPI.
