@@ -11,9 +11,9 @@ import lombok.experimental.Accessors;
  * A param class representing the response from the
  * {@link com.emerald.financialmodelingprep.api.noargs.profile.model.CompanyProfileAPI
  * CompanyProfileAPI} url.
- * 
- * @author C4X2
  *
+ * @author C4X2
+ * @version 1.0
  */
 @Getter
 @Setter

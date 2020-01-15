@@ -63,8 +63,8 @@ public interface FinancialModelingPrepAPI
 	 * <p>
 	 * The operator used to indicate theat there are multiple parameter
 	 * specification in the RESTful url. <em>Please note that the concat character
-	 * should be used only if there are multiple query parameters has to be
-	 * specified before this operator is applied.</em>
+	 * should be used only if there are multiple query parameters. Note that the
+	 * company ticker has to be specified before this operator is applied.</em>
 	 * </p>
 	 */
 	public static final String	RESTFUL_QUERY_CONCAT	= "&";
