@@ -11,51 +11,37 @@ import com.emerald.financialmodelingprep.common.params.Company;
 
 public class CompanyFinancialStatementAPIImpl implements CompanyFinancialStatementAPI
 {
+
 	@Override
-	public FinancialModelingPrepAPI buildAPIURL(String ticker)
+	public String buildAPIURL(String company, Period period)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public FinancialModelingPrepAPI buildAPIURL(Company company, Period period)
+	public String buildAPIURL(String company, DataType dataType)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public FinancialModelingPrepAPI buildAPIURL(Company company, DataType dataType)
+	public String buildAPIURL(String company, SeriesType seriesType)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public FinancialModelingPrepAPI buildAPIURL(Company company, SeriesType seriesType)
+	public String buildAPIUrl(String company, Map<String, String> args)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public FinancialModelingPrepAPI buildAPIUrl(Company company, Map<String, String> args)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public String getURL()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String get()
+	public String buildAPIURL(String ticker)
 	{
 		// TODO Auto-generated method stub
 		return null;

@@ -1,9 +1,7 @@
 package com.emerald.financialmodelingprep.api.noargs.crypto.model;
 
-import java.util.List;
-
 import com.emerald.financialmodelingprep.api.FinancialModelingPrepAPI;
-import com.emerald.financialmodelingprep.common.params.CryptocurrencyCoin;
+import com.emerald.financialmodelingprep.common.exceptions.TickerDoesNotExistException;
 
 public interface Crypto extends FinancialModelingPrepAPI
 {
@@ -56,28 +54,15 @@ public interface Crypto extends FinancialModelingPrepAPI
 	public static final String	CRYPTO_SINGLE	= "/v3/cryptocurrency";
 
 	/**
-	 * If the supplied argument is null, it is the equalivalent of calling the
-	 * {@link #buildAPIURL()} method.
+	 * @throws TickerDoesNotExistException if the given ticker does not exist or is null.
 	 */
 	@Override
-	public FinancialModelingPrepAPI buildAPIURL(String ticker);
+	public String buildAPIURL(String ticker);
 
 	/**
 	 * Convience method to build the {@link #CRYPTO} endpoint URL.
 	 * 
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
+	 * @return the newly built URL.
 	 */
-	public FinancialModelingPrepAPI buildAPIURL();
-
-	/**
-	 * Extracts all the Cryptocurrency information from the input string. If the
-	 * string is empty or contains no Cryptocurrency information it will return an
-	 * empty list.
-	 * 
-	 * @param json json string containing an array of Cryptocurrencies
-	 * @return a list of CryptocurrencyCoins retrieved from the input string.
-	 * @exception NullPointerException throws a null pointer exception if the input
-	 *            string is null;
-	 */
-	public List<CryptocurrencyCoin> retrieveCryptocurrenciesFromJson(String json);
+	public String buildAPIURL();
 }

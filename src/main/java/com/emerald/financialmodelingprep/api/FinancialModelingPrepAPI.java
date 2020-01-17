@@ -74,22 +74,22 @@ public interface FinancialModelingPrepAPI
 	 * 
 	 * @param ticker the ticker for the company that you want to receive information
 	 *        about.
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
+	 * @return the newly built URL.
 	 */
-	public FinancialModelingPrepAPI buildAPIURL(String ticker);
+	public String buildAPIURL(String ticker);
 
 	/**
 	 * Returns the URL stored in the FinancialModelingPrepAPI.
 	 *
 	 * @return the RESTful URL that this API is making calls to.
 	 */
-	public String getURL();
+	//public String getURL();
 
 	/**
 	 * Calls the URL and returns the JSON reponse as a string.
 	 *
 	 * @return a JSON representing the JSON reponse.
 	 */
-	public String get();
+	//public String get();
 
 }

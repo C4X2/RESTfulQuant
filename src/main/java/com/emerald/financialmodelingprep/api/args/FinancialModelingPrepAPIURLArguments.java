@@ -13,7 +13,7 @@ import com.emerald.financialmodelingprep.common.params.Company;
  * like period, datatype, etc.
  * 
  * @author C4X2
- * @version 1.0
+ * @version 2.0
  *
  */
 public interface FinancialModelingPrepAPIURLArguments extends FinancialModelingPrepAPI
@@ -25,9 +25,9 @@ public interface FinancialModelingPrepAPIURLArguments extends FinancialModelingP
 	 * @param callType A call type enum related to the API you want to call
 	 * @param company the company that you want to receive information about.
 	 * @param period an enum value related to the period argument
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
+	 * @return the newly built URL.
 	 */
-	public FinancialModelingPrepAPI buildAPIURL(Company company, Period period);
+	public String buildAPIURL(String company, Period period);
 
 	/**
 	 * Builds the URL for the given company.
@@ -35,9 +35,9 @@ public interface FinancialModelingPrepAPIURLArguments extends FinancialModelingP
 	 * @param callType A call type enum related to the API you want to call
 	 * @param company the company that you want to receive information about.
 	 * @param dataType
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
+	 * @return the newly built URL.
 	 */
-	public FinancialModelingPrepAPI buildAPIURL(Company company, DataType dataType);
+	public String buildAPIURL(String company, DataType dataType);
 
 	/**
 	 * Builds the URL for the given company.
@@ -45,15 +45,15 @@ public interface FinancialModelingPrepAPIURLArguments extends FinancialModelingP
 	 * @param callType A call type enum related to the API you want to call
 	 * @param company the company that you want to receive information about.
 	 * @param seriesType
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
+	 * @return the newly built URL.
 	 */
-	public FinancialModelingPrepAPI buildAPIURL(Company company, SeriesType seriesType);
+	public String buildAPIURL(String company, SeriesType seriesType);
 
 	/**
 	 * 
 	 * @param company the company that you want to receive information about.
 	 * @param args the query parameters to be adding to the end of this URL call
-	 * @return the FinancialModelingPrepAPI object with the newly built URL.
+	 * @return the newly built URL.
 	 */
-	public FinancialModelingPrepAPI buildAPIUrl(Company company, Map<String, String> args);
+	public String buildAPIUrl(String company, Map<String, String> args);
 }

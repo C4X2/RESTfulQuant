@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.emerald.financialmodelingprep.api.noargs.crypto.model.Crypto;
 import com.emerald.financialmodelingprep.common.params.CryptocurrencyCoin;
@@ -16,17 +17,24 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+@Service @Getter @Setter @Accessors(chain = true)
 public class CryptoServiceImpl implements CryptoService
 {
 	private static final String		CRYPTOCURRENCIES_LIST	= "cryptocurrenciesList";
+	@Autowired
 	private Crypto					crypto;
+	@Autowired
 	private URLConnectionService	urlConnectionService;
 
 	@Override
 	public CryptocurrencyCoin getCryptocurrencyCoin(String ticker)
 	{
 		ValidationUtils.validateTicker(ticker);
-		String url = getCrypto().buildAPIURL(ticker).getURL();
+		String url = getCrypto().buildAPIURL(ticker);
 		String json = getUrlConnectionService().get(url);
 		return JsonDeserializerImpl.getGson().fromJson(json, CryptocurrencyCoin.class);
 	}
@@ -34,7 +42,7 @@ public class CryptoServiceImpl implements CryptoService
 	@Override
 	public List<CryptocurrencyCoin> getAllCryptocurrencyCoins()
 	{
-		String url = getCrypto().buildAPIURL().getURL();
+		String url = getCrypto().buildAPIURL();
 		String json = getUrlConnectionService().get(url);
 		JsonObject jObj = null;
 		JsonArray arr = null;
@@ -58,39 +66,4 @@ public class CryptoServiceImpl implements CryptoService
 		}
 		return coinList;
 	}
-
-	/**
-	 * @return the crypto
-	 */
-	public Crypto getCrypto()
-	{
-		return crypto;
-	}
-
-	/**
-	 * @param crypto the crypto to set
-	 */
-	@Autowired
-	public void setCrypto(Crypto crypto)
-	{
-		this.crypto = crypto;
-	}
-
-	/**
-	 * @return the urlConnectionService
-	 */
-	public URLConnectionService getUrlConnectionService()
-	{
-		return urlConnectionService;
-	}
-
-	/**
-	 * @param urlConnectionService the urlConnectionService to set
-	 */
-	@Autowired
-	public void setUrlConnectionService(URLConnectionService urlConnectionService)
-	{
-		this.urlConnectionService = urlConnectionService;
-	}
-
 }

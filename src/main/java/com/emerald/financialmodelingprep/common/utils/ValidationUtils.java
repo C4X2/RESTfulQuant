@@ -64,6 +64,7 @@ public class ValidationUtils
 	public static void validateTicker(String ticker)
 	{
 		// TODO
+		// throw new TickerDoesNotExistException("The supplied value of " + String.valueOf(ticker) + " is not a valid ticker");
 	}
 
 	/**
