@@ -13,16 +13,19 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 
 import com.emerald.financialmodelingprep.api.noargs.crypto.model.Crypto;
 import com.emerald.financialmodelingprep.api.noargs.profile.model.CompanyProfileAPI;
 import com.emerald.financialmodelingprep.common.constants.APICallType;
+import com.emerald.financialmodelingprep.common.params.CompanyProfile;
 import com.emerald.financialmodelingprep.common.params.CryptocurrencyCoin;
+import com.emerald.financialmodelingprep.common.params.DiscountedCashFlow;
 import com.emerald.financialmodelingprep.managers.model.APIFactory;
-import com.emerald.financialmodelingprep.services.crypto.impl.CryptoServiceImpl;
 import com.emerald.financialmodelingprep.services.crypto.model.CryptoService;
 import com.emerald.financialmodelingprep.services.impl.JsonDeserializerImpl;
 import com.emerald.financialmodelingprep.services.model.URLConnectionService;
+import com.emerald.financialmodelingprep.services.profile.model.CompanyProfileService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -41,9 +44,17 @@ class FinancialmodelingprepApplicationTests
 	private static final String	APPLE	= "AAPL";
 	private static final String	BITCOIN	= "BTC";
 	private static final String CRYPTOCURRENCIES_LIST = "cryptocurrenciesList";
+	
+
+	/////////////////////////////////////////////////////////////////////
+	//
+	// Test Class Fields
+	//
+	/////////////////////////////////////////////////////////////////////
+	
 	private APIFactory api;
 	private URLConnectionService urlConnection;
-	private CryptoService cryptoService;
+	private ApplicationContext applicationContext;
 
 	@Test
 	void contextLoads()
@@ -67,6 +78,7 @@ class FinancialmodelingprepApplicationTests
 	void cryptocurrenciesTest02()
 	{
 		Crypto api = (Crypto) this.getApi().getAPIOfType(APICallType.CRYPTO);
+		// TODO SHOULD THROW AN ERROR
 		assertEquals("https://financialmodelingprep.com/api/v3/cryptocurrencies", api.buildAPIURL(""));
 	}
 
@@ -88,7 +100,7 @@ class FinancialmodelingprepApplicationTests
 	@Test
 	void cryptocurrenciesTest06()
 	{
-		CryptocurrencyCoin coin = getCryptoService().getCryptocurrencyCoin(BITCOIN);
+		CryptocurrencyCoin coin = getApplicationContext().getBean(CryptoService.class).getCryptocurrencyCoin(BITCOIN);
 		assertNotNull(coin);
 	}
 
@@ -127,11 +139,28 @@ class FinancialmodelingprepApplicationTests
 	}
 
 	@Test
-	void companyProfileTest07()
+	void companyProfileTest05()
 	{
 		CompanyProfileAPI api = (CompanyProfileAPI) this.getApi().getAPIOfType(APICallType.COMPANY_PROFILE);
 		// TODO SHOULD THROW AN ERROR
 		assertNotNull(api.buildAPIURL(null));
+	}
+	
+	@Test
+	void companyProfileTest06()
+	{
+		CompanyProfileService companyProfileService = this.getApplicationContext().getBean(CompanyProfileService.class);
+		CompanyProfile companyProfile = companyProfileService.getCompanyProfile(APPLE);
+		assertNotNull(companyProfile);
+	}
+
+	@Test
+	void companyProfileTest07()
+	{
+		CompanyProfileService companyProfileService = this.getApplicationContext().getBean(CompanyProfileService.class);
+		CompanyProfile companyProfile = companyProfileService.getCompanyProfile(BITCOIN);
+		// nuLL because bitcoin is a cryptocurrency not a ticker
+		assertNull(companyProfile);
 	}
 
 	/////////////////////////////////////////////////////////////////////
@@ -233,6 +262,15 @@ class FinancialmodelingprepApplicationTests
 		}
 		assertTrue(CollectionUtils.isNotEmpty(coinList));
 	}
+	
+	@Test
+	void testCompanyFacade()
+	{
+		CompanyFacade company = new CompanyFacade(APPLE);
+		getApplicationContext().getAutowireCapableBeanFactory().autowireBean(company);
+		DiscountedCashFlow dcf = company.getDiscountedCashFlow();
+		assertNotNull(dcf);
+	}
 
 	/**
 	 * @return the api
@@ -269,19 +307,19 @@ class FinancialmodelingprepApplicationTests
 	}
 
 	/**
-	 * @return the cryptoService
+	 * @return the applicationContext
 	 */
-	public CryptoService getCryptoService()
+	public ApplicationContext getApplicationContext()
 	{
-		return cryptoService;
+		return applicationContext;
 	}
 
 	/**
-	 * @param cryptoService the cryptoService to set
+	 * @param applicationContext the applicationContext to set
 	 */
 	@Autowired
-	public void setCryptoService(CryptoService cryptoService)
+	public void setApplicationContext(ApplicationContext applicationContext)
 	{
-		this.cryptoService = cryptoService;
+		this.applicationContext = applicationContext;
 	}
 }

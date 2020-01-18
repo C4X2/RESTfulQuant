@@ -78,18 +78,4 @@ public interface FinancialModelingPrepAPI
 	 */
 	public String buildAPIURL(String ticker);
 
-	/**
-	 * Returns the URL stored in the FinancialModelingPrepAPI.
-	 *
-	 * @return the RESTful URL that this API is making calls to.
-	 */
-	//public String getURL();
-
-	/**
-	 * Calls the URL and returns the JSON reponse as a string.
-	 *
-	 * @return a JSON representing the JSON reponse.
-	 */
-	//public String get();
-
 }

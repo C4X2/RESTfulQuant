@@ -8,7 +8,6 @@ import com.emerald.financialmodelingprep.common.utils.ValidationUtils;
 @Service
 public class CompanyRatingAPIImpl implements CompanyRatingAPI
 {
-	private String url;
 	
 	@Override
 	public String buildAPIURL(String ticker)

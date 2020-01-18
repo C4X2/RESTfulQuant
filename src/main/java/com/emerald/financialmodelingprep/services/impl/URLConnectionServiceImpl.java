@@ -25,14 +25,14 @@ public class URLConnectionServiceImpl implements URLConnectionService
 			URL apiUrl = new URL(url);
 			inputStreamReader = new InputStreamReader(apiUrl.openStream(), "UTF-8");
 			br = new BufferedReader(inputStreamReader);
-			String val = br.readLine();
+			StringBuffer val = new StringBuffer(br.readLine());
 			String nxtLine = br.readLine();
 			while (nxtLine != null)
 			{
-				val += nxtLine;
+				val.append(nxtLine);
 				nxtLine = br.readLine();
 			}
-			return val;
+			return val.toString();
 		} catch (Exception e)
 		{
 

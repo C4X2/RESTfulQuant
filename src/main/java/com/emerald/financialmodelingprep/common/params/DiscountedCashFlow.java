@@ -16,6 +16,5 @@ public class DiscountedCashFlow
 	private Date		date;
 	@SerializedName(value = "Stock Price")
 	private BigDecimal	stockPrice;
-	@SerializedName(value = "DCF")
 	private BigDecimal	dcf;
 }

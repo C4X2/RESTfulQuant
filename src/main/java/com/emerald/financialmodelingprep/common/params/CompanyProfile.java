@@ -15,9 +15,7 @@ import lombok.experimental.Accessors;
  * @author C4X2
  * @version 1.0
  */
-@Getter
-@Setter
-@Accessors(chain = true)
+@Getter @Setter @Accessors(chain = true)
 public class CompanyProfile
 {
 	private BigDecimal	beta;
@@ -30,7 +28,7 @@ public class CompanyProfile
 	private String		image;
 	private String		industry;
 	private BigDecimal	lastDiv;
-	private BigInteger	mktCap;
+	private BigDecimal	mktCap;
 	private BigDecimal	price;
 	/**
 	 * This represents the range of the stock price over the period of time, usually
