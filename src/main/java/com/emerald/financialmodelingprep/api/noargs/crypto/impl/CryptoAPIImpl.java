@@ -7,7 +7,7 @@ import com.emerald.financialmodelingprep.common.utils.ValidationUtils;
 
 @Service
 public class CryptoAPIImpl implements Crypto
-{
+{	
 	@Override
 	public String buildAPIURL(String ticker)
 	{

@@ -2,6 +2,11 @@ package com.emerald.financialmodelingprep.common.constants;
 
 public enum DataType
 {
-	csv,
-	json
+	CSV, JSON;
+
+	@Override
+	public String toString()
+	{
+		return name().toLowerCase();
+	}
 }

@@ -42,7 +42,7 @@ public class CompanyProfileServiceImpl implements CompanyProfileService
 	/**
 	 * This is need to properly deserialize the response from the Financial Prep API
 	 * b/c they format all the Company Profile in a JSON array.
-	 * 
+	 * 0
 	 * @param json json to be deserialized
 	 * @return a CompanyProfile object representing the json
 	 */
@@ -54,7 +54,6 @@ public class CompanyProfileServiceImpl implements CompanyProfileService
 		}
 		CompanyProfile companyProfile = null;
 		JsonObject jObj = null;
-		JsonArray jArr = null;
 		JsonElement jElem = JsonParser.parseString(json);
 		if (jElem.isJsonObject())
 		{

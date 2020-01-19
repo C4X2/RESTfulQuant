@@ -3,6 +3,7 @@ package com.emerald.financialmodelingprep.services.crypto.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.platform.commons.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,16 @@ public class CryptoServiceImpl implements CryptoService
 	{
 		String url = getCrypto().buildAPIURL();
 		String json = getUrlConnectionService().get(url);
+		List<CryptocurrencyCoin> coinList = getCryptocurrencyCoinsFromJson(json);
+		return coinList;
+	}
+
+	private List<CryptocurrencyCoin> getCryptocurrencyCoinsFromJson(String json)
+	{
+		if (StringUtils.isBlank(json))
+		{
+			return null;
+		}
 		JsonObject jObj = null;
 		JsonArray arr = null;
 		JsonElement coins = JsonParser.parseString(json);

@@ -14,15 +14,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.util.Assert;
 
 import com.emerald.financialmodelingprep.api.noargs.crypto.model.Crypto;
 import com.emerald.financialmodelingprep.api.noargs.profile.model.CompanyProfileAPI;
 import com.emerald.financialmodelingprep.common.constants.APICallType;
+import com.emerald.financialmodelingprep.common.constants.Period;
 import com.emerald.financialmodelingprep.common.params.CompanyProfile;
 import com.emerald.financialmodelingprep.common.params.CryptocurrencyCoin;
 import com.emerald.financialmodelingprep.common.params.DiscountedCashFlow;
 import com.emerald.financialmodelingprep.managers.model.APIFactory;
 import com.emerald.financialmodelingprep.services.crypto.model.CryptoService;
+import com.emerald.financialmodelingprep.services.discountedcashflow.model.DiscountedCashFlowService;
 import com.emerald.financialmodelingprep.services.impl.JsonDeserializerImpl;
 import com.emerald.financialmodelingprep.services.model.URLConnectionService;
 import com.emerald.financialmodelingprep.services.profile.model.CompanyProfileService;
@@ -168,6 +171,40 @@ class FinancialmodelingprepApplicationTests
 	// Company Rating Test
 	//
 	/////////////////////////////////////////////////////////////////////
+	
+	/////////////////////////////////////////////////////////////////////
+	//
+	// Company Discounted Cash Flow Test
+	//
+	/////////////////////////////////////////////////////////////////////
+	
+	void companyDiscountedCashFlowTest01()
+	{
+		DiscountedCashFlowService dsc = getApplicationContext().getBean(DiscountedCashFlowService.class);
+		assertNotNull(dsc);
+	}
+	
+	void companyDiscountedCashFlowTest02()
+	{
+		DiscountedCashFlowService dsc = getApplicationContext().getBean(DiscountedCashFlowService.class);
+		DiscountedCashFlow dcf = dsc.getDiscountedCashFlow(APPLE);
+		assertNotNull(dcf);
+	}
+	
+	void companyDiscountedCashFlowTest03()
+	{
+		DiscountedCashFlowService dsc = getApplicationContext().getBean(DiscountedCashFlowService.class);
+		List<DiscountedCashFlow> listOfHistoricalDiscountedCashFlow = dsc.getHistoricalDiscountedCashFlow(APPLE);
+		assertNotNull(listOfHistoricalDiscountedCashFlow);
+		Assert.notEmpty(listOfHistoricalDiscountedCashFlow, "The list should be populated with multiple values");
+	}
+	
+	void companyDiscountedCashFlowTest04()
+	{
+		DiscountedCashFlowService dsc = getApplicationContext().getBean(DiscountedCashFlowService.class);
+		List<DiscountedCashFlow> dcf = dsc.getHistoricalDiscountedCashFlow(APPLE, Period.QUARTER);
+		assertNotNull(dcf);
+	}
 
 	/////////////////////////////////////////////////////////////////////
 	//

@@ -4,5 +4,11 @@ import com.emerald.financialmodelingprep.api.args.RESTfulURLArgumentParameters;
 
 public enum SeriesType implements RESTfulURLArgumentParameters
 {
-	LINE
+	LINE;
+
+	@Override
+	public String toString()
+	{
+		return name().toLowerCase();
+	}
 }

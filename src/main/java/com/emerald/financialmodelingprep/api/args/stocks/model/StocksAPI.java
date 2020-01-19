@@ -31,7 +31,7 @@ public interface StocksAPI extends FinancialModelingPrepAPIURLArguments
 	 * after this URL.</em>
 	 */
 	@Batachable
-	public static final String	REAL_TIME_STOCK_PRICE			= "/v3/stock/real-time-price/";
+	public static final String	REAL_TIME_STOCK_PRICE		= "/v3/stock/real-time-price/";
 
 	/**
 	 * <p>
@@ -50,7 +50,7 @@ public interface StocksAPI extends FinancialModelingPrepAPIURLArguments
 	 * Updated in real-time.
 	 * </p>
 	 */
-	public static final String	ALL_REAL_TIME_STOCK_PRICE		= "/v3/stock/real-time-price";
+	public static final String	ALL_REAL_TIME_STOCK_PRICE	= "/v3/stock/real-time-price";
 
 	/**
 	 * <p>
@@ -69,7 +69,7 @@ public interface StocksAPI extends FinancialModelingPrepAPIURLArguments
 	 * <em>Please note that the ticker of the desired company has to be specified
 	 * after this URL.</em>
 	 */
-	public static final String	HISTORICAL_STOCK_PRICE			= "/v3/historical-price-full/";
+	public static final String	HISTORICAL_STOCK_PRICE		= "/v3/historical-price-full/";
 
 	/**
 	 * <p>
@@ -87,8 +87,16 @@ public interface StocksAPI extends FinancialModelingPrepAPIURLArguments
 	 * Updated in real-time.
 	 * </p>
 	 */
-	public static final String	TICKER_LIST						= "/v3/company/stock/list";
+	public static final String	TICKER_LIST					= "/v3/company/stock/list";
 
 	// TODO FINISH HISTORICAL STOCK DATA
 
+	/**
+	 * <p>
+	 * Builds the URL to receive all real-time stock prices.
+	 * </p>
+	 * 
+	 * @return the newly built URL.
+	 */
+	public String buildAPIURL();
 }

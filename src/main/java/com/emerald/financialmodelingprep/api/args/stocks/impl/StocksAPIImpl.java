@@ -46,6 +46,13 @@ public class StocksAPIImpl implements StocksAPI
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public String buildAPIURL()
+	{
+		return null;
+	}
+
 
 
 }
